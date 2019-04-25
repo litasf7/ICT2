@@ -46,15 +46,16 @@ $row3 = $data3 -> fetch_assoc();
   <div class="row">
     <div class="col-sm-4">
 		<h2 Style="margin-top:50px;text-align:center">Employee </h2><hr class="bg-info">
-		<img src="images/Employee.jpg" class="rounded-circle mx-auto d-block" alt="employee" width="200" height="200" style="margin-bottom: 20px;margin-top: 30px; ">
+		<img src="images/employee_fake.png" class="rounded-circle mx-auto d-block" alt="employee" width="200" height="200" style="margin-bottom: 20px;margin-top: 30px; ">
 		<?php do { ?> 
-		<ul>
-       <li class="nav-link">
-           <a href="empDesc.php?id= <?php echo $row2['emp_id']; ?>" data-toggle="tooltip"  class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></a>
-      </li>
+		
+       <ul class="nav-link">
+           
+           <a href="#empSection" ><button data-toggle="tooltip" class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></button></a>
+      </ul>
       
       <?php } while($row2 = $data2 -> fetch_assoc()) ?>
-    </ul>
+   
 	  </div>
 	
 		
@@ -73,7 +74,7 @@ $row3 = $data3 -> fetch_assoc();
 				Opening hours:&nbsp; Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </p>
 	  <?php } while($row1 = $data1 -> fetch_assoc()) ?>
 	  	
-	  <div id=empSection>
+	  <div id= "empSection" >
 	  	
 <?php 
 $i = 0;
