@@ -51,38 +51,7 @@ $row3 = $data3 -> fetch_assoc();
        <li class="nav-link">
            <a href="empDesc.php?id= <?php echo $row2['emp_id']; ?>" data-toggle="tooltip"  class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></a>
       </li>
-      <li>
-<?php 
-$i = 0;
-$pre_slot_id = "";
-				    
-   echo "Available Time Slots";
-				  echo "<hr>";
-				  echo "<br>";
-while($row3 = $data3->fetch_assoc()){ 
-    if($row3['slot_id'] != $pre_slot_id){ 
-        if($i > 0){
-            echo "</table>"; 
-            echo "<hr>"; 
-        }
-        echo "<table>"; 
-            echo "<tr>";
-                echo "<th >".$row3['avail']."</th>"; 
-            echo "</tr>";
-			echo "<tr>";
-		echo '<a href="bookslot.php?id='. $row3['slot_id'] .'">Book This Slot</a>'; 
-			echo "</tr>";
-    $i++; 
-    $pre_slot_id = $row3['slot_id']; 
-    }
-    echo "<tr>";
-		echo "<td>".$row2['fname']."</td>";
-        echo "<td>".$row3['emp_id']."</td>";
-    echo "</tr>";
-}
-echo "</hr>";
-echo "</table>"; ?>
-      </li>
+      
       <?php } while($row2 = $data2 -> fetch_assoc()) ?>
     </ul>
 	  </div>
@@ -90,23 +59,57 @@ echo "</table>"; ?>
 		
 	 <?php do { ?>
 		<div class="col-sm-8" style="text-align: center">
-			<h1 Style="margin-top:50px;text-align:center;float: inherit"><?php echo $row1['sname']; ?></h1>	
-			<div><img src="<?php echo $row1['image'];?>" class="img-fluid" style="width:100%; height: 60%; "></div>
+			<h1 Style="margin-top:30px;text-align:center;float: inherit"><?php echo $row1['sname']; ?></h1>	<br>
+			<div><img src="<?php echo $row1['image'];?>" class="img-fluid" style="width:70%; height: 60%; "></div>
 			<br>
-			<p><li>Address: <?php echo $row1['saddress']; ?>.</li>
-				<li><?php echo $row1['city']; ?>.</li>
-				<li><?php echo $row1['zip']; ?>.</li>
-				<li><?php echo $row1['state']; ?>.</li>
-				<li>Contact Number: <?php echo $row1['number']; ?>.</li>
-				<li>Email Address: <?php echo $row1['email']; ?>.</li>
-				<li>Opening hours: Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </li></p>
+            <p class="text-info" style="font-size:20px"><b>ADDRESS</b></p>
+            <p><?php echo $row1['saddress']; ?><br>
+				<?php echo $row1['city']; ?> &nbsp;
+				<?php echo $row1['state']; ?> - 
+                <?php echo $row1['zip']; ?><br>
+				Contact Number: &nbsp;<?php echo $row1['number']; ?><br>
+				Email Address: &nbsp;<?php echo $row1['email']; ?><br>
+				Opening hours:&nbsp; Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </p>
 	  <?php } while($row1 = $data1 -> fetch_assoc()) ?>
-	  	</div>
+	  	
 	  <div id=empSection>
 	  	
+<?php 
+$i = 0;
+$pre_slot_id = "";
+				    
+   echo "<h1 class='text-info'>Available Time Slots</h1>";
+				  echo "<hr>";
+				  echo "<br>";
+while($row3 = $data3->fetch_assoc()){ 
+    if($row3['slot_id'] != $pre_slot_id){ 
+        if($i > 0){
+            echo "</table>"; 
+            //echo "<hr>"; 
+        }
+        echo "<table align='center' class='bg-info table-responsive' >"; 
+        
+       
+    echo "<tr>";
+        
+                echo "<td style='font-size:30px; padding-right:40px;'>".$row3['avail']."</td>"; 
+          
+			echo "<td>"; 
+		echo '<a href="bookslot.php?id='. $row3['slot_id'] .'">Book This Slot</a>'; 
+			echo "</td>";
+        
+    echo "</tr>";
+    $i++; 
+    $pre_slot_id = $row3['slot_id']; 
+    }
+    
+}
+//echo "</hr>";
+echo "</table>"; ?>
+      
 	  </div>
 	  </div>
-	  </div>
+	  </div></div>
 	<br>
 <!-- Footer -->
  <div class="footer">
