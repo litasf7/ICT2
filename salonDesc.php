@@ -19,6 +19,7 @@ $data1 = $connection->query("SELECT * FROM salon WHERE salon_id =" .$id);
 $data3 = $connection->query("SELECT * FROM slot WHERE slot.salon_id =" . $id );
 
 $data2 = $connection->query("SELECT * FROM employee WHERE employee.salon_id =" . $id );
+
 $row1 = $data1 -> fetch_assoc();
 $row2 = $data2 -> fetch_assoc();
 $row3 = $data3 -> fetch_assoc(); 
@@ -81,22 +82,25 @@ $pre_slot_id = "";
    echo "<h1 class='text-info'>Available Time Slots</h1>";
 				  echo "<hr>";
 				  echo "<br>";
+    
+    echo "<div class='container'>";
+     
 while($row3 = $data3->fetch_assoc()){ 
     if($row3['slot_id'] != $pre_slot_id){ 
         if($i > 0){
-            echo "</table>"; 
-            //echo "<hr>"; 
+ 
+           
         }
-        echo "<table align='center' class='bg-info table-responsive' >"; 
-        
        
+       echo "<table align='center'  >"; 
+             
     echo "<tr>";
-        
-                echo "<td style='font-size:30px; padding-right:40px;'>".$row3['avail']."</td>"; 
-          
-			echo "<td>"; 
+        echo "<td>";
+        echo "".$row3['avail'].""; echo"&nbsp"; echo"&nbsp";
+        echo "</td>"; 
+        echo "<td>"; 
 		echo '<a href="bookslot.php?id='. $row3['slot_id'] .'">Book This Slot</a>'; 
-			echo "</td>";
+        echo "</td>";
         
     echo "</tr>";
     $i++; 
@@ -105,8 +109,10 @@ while($row3 = $data3->fetch_assoc()){
     
 }
 //echo "</hr>";
-echo "</table>"; ?>
-      
+  
+echo "</table>"; 
+           echo "</div >";?>
+     
 	  </div>
 	  </div>
 	  </div></div>
