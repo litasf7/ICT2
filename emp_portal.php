@@ -55,7 +55,7 @@
 			</div>
 			<div class="card-footer" >
 				<div class="d-flex justify-content-center links text-info">
-					Don't have an account?<a href="userReg.php" style="color: black">Sign Up</a>
+					Don't have an account?<a href="empLogin.php" style="color: black">Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
 					<a href="#" style="color: black">Forgot your password?</a>

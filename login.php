@@ -17,6 +17,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<!--Custom styles-->
+    <style>
+    .bg-img {
+  /* The image used */
+  background-image:url();
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}</style>
 </head>
 <body>
     <?php include('nav.php') ?>
@@ -24,7 +37,7 @@
 
 
 <div class="container">
-
+<div class="bg-img">
 	<div class="d-flex justify-content-center">
 		<div class="card" style="margin-top: 50px; margin-bottom: 50px;height: auto">
 			<div class="card-header border-info">
@@ -35,7 +48,7 @@
 					<a href="userLogin.php"><button type="button" class="btn btn-lg w-75 btn-outline-info" style="margin-bottom: 20px; ">User</button></a>
 		        </div>
 				<div class="text-center">
-					<a href="empLogin.php"><button type="button" class="btn btn-lg w-75 btn-outline-info" style="margin-bottom: 20px; ">Employee</button></a>
+					<a href="emp_portal.php"><button type="button" class="btn btn-lg w-75 btn-outline-info" style="margin-bottom: 20px; ">Employee</button></a>
 				</div>
 				<div class="text-center">
 				    <a href="salonLogin.php"><button type="button" class="btn  btn-lg w-75 btn-outline-info" style="margin-bottom: 20px;">Salon</button></a>
@@ -44,6 +57,7 @@
 		</div>
 	</div>
 </div>
+    </div>
 </div>
     <br>
     <!-- Footer -->
