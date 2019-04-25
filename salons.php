@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+$_SESSION["email"];
 $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 	$sql = "SELECT * FROM salon";
 	$result = $connection -> query($sql);

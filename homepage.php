@@ -15,7 +15,7 @@
 <body >
 
 
-<?php include("nav.php")?>
+<?php include("nav.php");?>
   
 <div class="container" style="margin-top:30px">
   <div class="row">
