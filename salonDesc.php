@@ -20,6 +20,7 @@ $data3 = $connection->query("SELECT * FROM slot WHERE slot.salon_id =".$id);
 
 $data2 = $connection->query("SELECT * FROM employee WHERE employee.salon_id =" . $id );
 
+
 $row1 = $data1 -> fetch_assoc();
 $row2 = $data2 -> fetch_assoc();
 $row3 = $data3 -> fetch_assoc(); 
@@ -45,16 +46,16 @@ $row3 = $data3 -> fetch_assoc();
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-		<h2 Style="margin-top:50px;text-align:center">Employee </h2><hr class="bg-info">
-		<img src="images/employee_fake.png" class="rounded-circle mx-auto d-block" alt="employee" width="200" height="200" style="margin-bottom: 20px;margin-top: 30px; ">
+		<h2 Style="margin-top:50px;text-align:center">Staff </h2><hr class="bg-info">
+		<div><img src="images/employee_fake.png" class="rounded-circle mx-auto d-block" alt="employee" width="200" height="200" style="margin-bottom: 20px;margin-top: 30px; "></div>
 		<?php do { ?> 
 		
        <ul class="nav-link">
            
-           <a href="text.php?=<?php echo $row2['emp_id']; ?>" ><button data-toggle="tooltip" class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></button></a>
+           <a href="text.php?id= <?php echo $row2['emp_id']; ?>" ><button data-toggle="tooltip" class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></button></a>
       </ul>
       
-      <?php } while($row2 = $data2 -> fetch_assoc()) ?>
+       <?php } while($row2 = $data2 -> fetch_assoc()) ?>
    
 	  </div>
 	
@@ -75,15 +76,10 @@ $row3 = $data3 -> fetch_assoc();
 	  <?php } while($row1 = $data1 -> fetch_assoc()) ?>
 	  	
 	  <div id= "empSection" >
-          What is Lorem Ipsum?<br><br>
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br>
-
-  Where does it come from? <br><br>
-  Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.<br><br>
-
-  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero ar
-	  	
+          
+  	
 <?php 
+    
 $i = 0;
 $pre_slot_id = "";
 				    
@@ -91,7 +87,8 @@ $pre_slot_id = "";
 				  echo "<hr>";
 				  echo "<br>";
     
-    echo "<div class='container'>";
+   
+      
      
 while($row3 = $data3->fetch_assoc()){ 
     if($row3['slot_id'] != $pre_slot_id){ 
@@ -106,9 +103,11 @@ while($row3 = $data3->fetch_assoc()){
         echo "<td>";
         echo "".$row3['avail'].""; echo"&nbsp"; echo"&nbsp";
         echo "</td>"; 
+        
         echo "<td>"; 
 		echo '<a href="bookslot.php?id='. $row3['slot_id'] .'">Book This Slot</a>'; 
         echo "</td>";
+        
         
     echo "</tr>";
     $i++; 
@@ -116,12 +115,13 @@ while($row3 = $data3->fetch_assoc()){
     }
     
 }
-//echo "</hr>";
-  
-echo "</table>"; 
-           echo "</div >";?>
-     
+                  
+//echo "</hr>";  
+echo "</table>"; ?>
+          
+   
 	  </div>
+           
 	  </div>
 	  </div></div>
 	<br>
