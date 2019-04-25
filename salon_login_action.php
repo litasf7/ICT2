@@ -20,6 +20,7 @@
 			$_SESSION["email"] = $email;
 			$_SESSION["loggedIn"] = 1;
 			
+			
 		
 			
 			header("Location: salon_welcome.php");

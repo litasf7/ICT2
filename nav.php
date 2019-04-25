@@ -1,9 +1,6 @@
 <?php 
+session_start();
  $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
-if (isset($_SESSION["email"]) || isset($_SESSION["emp_code"])) {
-	$_SESSION["email"] = $email;
-	$_SESSION["emp_code"];
-}
 
 ?>
 <html>
@@ -49,11 +46,11 @@ if (isset($_SESSION["email"]) || isset($_SESSION["emp_code"])) {
         <a class="nav-link" href="contact.php" style="color:#ffffff">Contact</a>
       </li>
       <li class="nav-item">
-          <?php if(isset($_SESSION['email']) || isset($_SESSION["emp_code"])){ ?>
+          <?php if(isset($_SESSION['email'])){ ?>
         <a class="nav-link" href="logout.php" style="color:#ffffff">Logout</a>
       </li>
       <li class="nav-item">
-          <?php }else{ ?>
+          <?php } else{ ?>
         <a class="nav-link" href="login.php" style="color:#ffffff">Login</a>
           <?php } ?>
       </li>

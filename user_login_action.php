@@ -11,13 +11,18 @@
 		
 		$email = $connection->real_escape_string($_POST["email"]);
 		$password = md5($connection->real_escape_string($_POST["password"]));
-		$data = $connection->query("SELECT fname FROM user WHERE email='$email' AND password='$password'");
-
+		$data = $connection->query("SELECT * FROM user WHERE email='$email' AND password='$password'");
+		
+		
 		if ($data->num_rows > 0) {
+			$row = $data->fetch_assoc();
+			$_SESSION["id"] = $row['user_id'];
 			$_SESSION["email"] = $email;
 			$_SESSION["loggedIn"] = 1;
+			
 	
 			header("Location: user_welcome.php");
+			
 		
 
 		} else {

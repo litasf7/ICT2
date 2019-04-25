@@ -15,7 +15,8 @@
 		$data = $connection->query("SELECT * FROM employee WHERE emp_code ='$emp_code'");
 				
 		if ($data->num_rows > 0) {
-
+			$row = $data->fetch_assoc();
+			$_SESSION["email"] = $row['email'];
 
 			$_SESSION["loggedIn"] = 1;
 			$_SESSION["emp_code"] = $emp_code;
