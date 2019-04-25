@@ -16,7 +16,7 @@ $data1 = $connection->query("SELECT * FROM salon WHERE salon_id =" .$id);
 					ON salon.salon_id = employee.salon_id
 					WHERE salon.salon_id = '" . $id ."'");*/
 
-$data3 = $connection->query("SELECT * FROM slot WHERE slot.salon_id =" . $id );
+$data3 = $connection->query("SELECT * FROM slot WHERE  slot.salon_id =" . $id );
 
 $data2 = $connection->query("SELECT * FROM employee WHERE employee.salon_id =" . $id );
 $row1 = $data1 -> fetch_assoc();
@@ -49,7 +49,7 @@ $row3 = $data3 -> fetch_assoc();
 		<?php do { ?> 
 		<ul>
        <li class="nav-link">
-           <a href="empDesc.php?id= <?php echo $row2['emp_id']; ?>" data-toggle="tooltip"  class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></a>
+           <a href="#empSection<?php echo $row2['emp_id']; ?>" data-toggle="tooltip"  class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></a>
       </li>
       
       <?php } while($row2 = $data2 -> fetch_assoc()) ?>
@@ -72,7 +72,7 @@ $row3 = $data3 -> fetch_assoc();
 				Opening hours:&nbsp; Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </p>
 	  <?php } while($row1 = $data1 -> fetch_assoc()) ?>
 	  	
-	  <div id=empSection>
+	  <div id="empSection<?php echo $row2['emp_id']; ?>">
 	  	
 <?php 
 $i = 0;
