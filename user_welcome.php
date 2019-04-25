@@ -1,6 +1,6 @@
 <?php  
 session_start();  
- $semail =  $_SESSION['email'];
+ $email =  $_SESSION['email'];
 if(!$_SESSION['email'])  
 {  
   
@@ -9,7 +9,7 @@ if(!$_SESSION['email'])
 else{
 
   $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
- $sql = $connection->query("SELECT * FROM user WHERE email = '$semail' ");
+ $sql = $connection->query("SELECT * FROM user WHERE email = '$email' ");
 if ($sql->num_rows>0){
 	$row = $sql -> fetch_assoc();
 			$id = $row['user_id'];

@@ -48,7 +48,7 @@ $id = $_GET['id'];
 
 $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 
-$data1 = $connection->query("SELECT * FROM salon WHERE salon_id =" .$id);
+$data1 = $connection->query("SELECT * FROM slot WHERE slot.emp_id = 16");
 //$data1 = $connection->query("SELECT * FROM employee,salon WHERE salon.salon_id = employee.salon_id");
 //$data1 = $connection->query("SELECT salon.sname, salon.saddress,salon.pin,salon.state,employee.emp_id
 							//	FROM salon 
@@ -70,10 +70,7 @@ $row2 = $data2 -> fetch_assoc();
 <div class="row">
   <div class="column">
     <div class="card">
-      <h3><?php echo $row1['sname']; ?></h3>
-      <p>Salon Address: <?php echo $row1['saddress']; ?></p>
-      <p><?php echo $row1['pin']; ?></p>
-      <p> <?php echo $row1['state']; ?></p>
+      <h3><?php echo $row1['avail']; ?></h3>
     </div> 
   </div>
  
