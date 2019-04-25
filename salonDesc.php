@@ -36,6 +36,24 @@ $row3 = $data3 -> fetch_assoc();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+	function empSlot() {
+     var id = $('.btn ').attr('data-id');
+	
+		$.ajax({
+			type: "POST",
+			url: "aj.php",
+			data: {
+				id: id
+			},
+			success: function(data) {
+			alert(data);
+				$("#newid").html(data);
+			}
+			
+		})
+	}
+</script>
 </head>
 <body>
 
@@ -47,13 +65,13 @@ $row3 = $data3 -> fetch_assoc();
 		<h2 Style="margin-top:50px;text-align:center">Employee </h2><hr class="bg-info">
 		<img src="images/Employee.jpg" class="rounded-circle mx-auto d-block" alt="employee" width="200" height="200" style="margin-bottom: 20px;margin-top: 30px; ">
 		<?php do { ?> 
-		<ul>
-       <li class="nav-link">
-           <a href="#empSection<?php echo $row2['emp_id']; ?>" data-toggle="tooltip"  class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></a>
-      </li>
-      
-      <?php } while($row2 = $data2 -> fetch_assoc()) ?>
-    </ul>
+		<ul class="nav-link">
+       <a class="btn btn-outline-info " data-id="<?php echo $row2['emp_id']; ?>" onclick="empSlot();" ><?php echo $row2['fname']; ?></a>
+         </ul> 
+          <?php } while($row2 = $data2 -> fetch_assoc()) ?>
+		
+   
+  
 	  </div>
 	
 		
@@ -72,40 +90,10 @@ $row3 = $data3 -> fetch_assoc();
 				Opening hours:&nbsp; Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </p>
 	  <?php } while($row1 = $data1 -> fetch_assoc()) ?>
 	  	
-	  <div id="empSection<?php echo $row2['emp_id']; ?>">
-	  	
-<?php 
-$i = 0;
-$pre_slot_id = "";
-				    
-   echo "<h1 class='text-info'>Available Time Slots</h1>";
-				  echo "<hr>";
-				  echo "<br>";
-while($row3 = $data3->fetch_assoc()){ 
-    if($row3['slot_id'] != $pre_slot_id){ 
-        if($i > 0){
-            echo "</table>"; 
-            //echo "<hr>"; 
-        }
-        echo "<table align='center' class='bg-info table-responsive' >"; 
-        
-       
-    echo "<tr>";
-        
-                echo "<td style='font-size:30px; padding-right:40px;'>".$row3['avail']."</td>"; 
-          
-			echo "<td>"; 
-		echo '<a href="bookslot.php?id='. $row3['slot_id'] .'">Book This Slot</a>'; 
-			echo "</td>";
-        
-    echo "</tr>";
-    $i++; 
-    $pre_slot_id = $row3['slot_id']; 
-    }
-    
-}
-//echo "</hr>";
-echo "</table>"; ?>
+	  
+
+			<div id="newid"></div>
+
       
 	  </div>
 	  </div>
