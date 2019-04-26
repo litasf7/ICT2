@@ -2,20 +2,17 @@
 <?php
 session_start();
 
-$id=$_GET['id'];
-
 $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 
-$data1 = $connection->query("SELECT * FROM slot WHERE slot.emp_id =".$id);
-$row1 = $data1 -> fetch_assoc();
+if(isset($_POST['id']){
+    $id = $_POST['id'];
+    
+    $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
+    $sql=$connection->query("select * from employee where emp_id = '$id'");
+    $data = $row->fetch_assoc();
+    echo $row['email'];
+    
+    
+    
+}
 ?>
-<?php do { ?>
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <h3><?php echo $row1['avail']; ?></h3>
-   
-    </div> 
-  </div>
-  
-   <?php } while($row1 = $data1 -> fetch_assoc()) ?>

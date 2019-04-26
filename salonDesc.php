@@ -18,7 +18,7 @@ $data1 = $connection->query("SELECT * FROM salon WHERE salon_id =" .$id);
 
 $data3 = $connection->query("SELECT * FROM slot WHERE slot.salon_id =".$id);
 
-$data2 = $connection->query("SELECT * FROM employee WHERE employee.salon_id =" . $id );
+$data2 = $connection->query("SELECT * FROM employee WHERE fname IS NOT NULL AND employee.salon_id=".$id  );
 
 
 $row1 = $data1 -> fetch_assoc();

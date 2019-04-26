@@ -1,6 +1,6 @@
 <?php 
 session_start();
-		include("nav.php");
+include("nav.php");
 include "include/config.php";
 ?>
    
@@ -27,6 +27,7 @@ include "include/config.php";
 		}
 			
 	}	?>
+
 
 <div class="container" style="text-align:center; ">
     <h1 class="text-info" style="margin-top:40px">My Account</h1>

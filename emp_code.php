@@ -9,7 +9,7 @@ if(isset($_POST['code'])){
 	$emp_code = $connection->real_escape_string($_POST["emp_code"]);
 	
 	$data = $connection->query("INSERT into employee (fname , lname , email , password , emp_code, salon_id) 
-	VALUES ('','','','','$emp_code', (SELECT salon_id FROM salon WHERE email = '$a'))");
+	VALUES (null,null,null,null,'$emp_code', (SELECT salon_id FROM salon WHERE email = '$a'))");
 
 	
 	if ($data === false)
