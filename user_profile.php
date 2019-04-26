@@ -3,10 +3,7 @@ session_start();
 		include("nav.php");
 include "include/config.php";
 ?>
-   <div class="container-fluid" style="text-align:center;">
-    <div class="row">
-    <div class="col-12 col-s-12">
-    <h1>My Account</h1>
+   
 <?php 
   	// check session variable
   	if (isset($_SESSION['email']))
@@ -18,6 +15,7 @@ include "include/config.php";
     	//make a query to check if a valid user
     	$ses_sql = "select * from user where email='$user_check'";
     	$result = $connection -> query($ses_sql);
+        
 		if ($result -> num_rows == 1) {
 			$row = $result -> fetch_assoc();
 			$id = $row['user_id'];
@@ -29,11 +27,32 @@ include "include/config.php";
 		}
 			
 	}	?>
-	 <div class="row">
-	 <h2>User id: <?php echo $row["user_id"] ?></h2>
-	<h2>First Name: <?php echo $row["fname"] ?></h2>
-	<h2>Last Name: <?php echo $row["lname"] ?></h2>
-		 <h2>Email: <?php echo $row["email"] ?></h2>
-	</div>
-		<h2><a class="link" href="user_update.php" > Update your profile here</a></h2>
-		 <h1><a href="user_logout.php">Logout here</a> </h1>  
+
+<div class="container" style="text-align:center; ">
+    <h1 class="text-info" style="margin-top:40px">My Account</h1>
+    <a  href=user_update.php class="btn btn-outline-info" style="float:right" >EDIT</a><br><hr>
+    
+	  <table class="table table-info " style="width:50%; margin-left:25%; margin-top:50px">
+         
+          
+          <tr >
+             <td> First Name:</td>
+            <td><?php echo $row["fname"] ?></td>
+          </tr>
+          <tr>
+             <td> Last Name:</td>
+             <td> <?php echo $row["lname"] ?></td>
+          </tr>
+          <tr>
+              <td>Email:</td>
+                <td><?php echo $row["email"] ?></td>
+          </tr>
+    </table></div> <br><br><br><br><br><br><br><br><br>
+		<!-- Footer -->
+ <div class="footer">
+<div class="jumbotron text-center bg-info" style="margin-bottom:0; padding-top:40px; padding-bottom:10px;">
+  
+<?php include("footer.php")?>
+  
+     </div></div>
+  <!-- Footer -->

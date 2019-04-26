@@ -20,4 +20,4 @@ for ($i = 0; $i < $length; $i++) {
 
 ?>
 	  <br>
-	  <input type="submit" name="submit" class="btn btn-info" style="align-content: center" ></input>
+	  <input type="submit" name="submit" class="btn btn-info" style="align-content: center;">
