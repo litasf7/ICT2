@@ -1,6 +1,6 @@
 <?php
 	session_start();
-if(!isset($_SESSION['loggedIn'])){
+if(!isset($_SESSION["emp_code"])){
 	header('Location: empLogin.php');
 }
 
@@ -8,12 +8,13 @@ if(!isset($_SESSION['loggedIn'])){
  $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 		
 		$data = $connection->query("SELECT * FROM employee WHERE emp_code='$emp_code'");
-
+if ($data->num_rows>0){
 			$row = $data -> fetch_assoc();
 			$emp_id = $row['emp_id'];
 			$fname = $row['fname'];
 			$lname = $row['lname'];
 			$email = $row['email'];
+		$_SESSION["emp_code"] =$row['emp_code'];
 
 	 	$slot = $connection->query("SELECT * FROM slot WHERE emp_id='$emp_id' ORDER BY avail ASC ");		 
 		  $row1 = $slot-> fetch_assoc();      
@@ -78,6 +79,7 @@ if(!isset($_SESSION['loggedIn'])){
 	</body>
 	<?php include('footer.php'); ?>
 </html>
+<?php } ?>
 
 
 	

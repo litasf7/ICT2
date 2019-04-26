@@ -2,13 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>My Account</title>
 </head>
 
 <body>
 
-
-<h2>Name: <?php echo '$fname';?> </h2>
+<h2>Name: <?php echo $row['fname'];?> </h2>
 
 
 

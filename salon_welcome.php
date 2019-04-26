@@ -10,8 +10,9 @@ if(!isset($_SESSION['loggedIn'])) {
 
 
 <?php  
-echo $_SESSION['email'];  
-echo $fname;
+	
+echo $user_check = $_SESSION['email'];  
+echo $row['oname'];
 	
 ?>  
 <br>

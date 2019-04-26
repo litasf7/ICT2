@@ -16,7 +16,7 @@ $data1 = $connection->query("SELECT * FROM salon WHERE salon_id =" .$id);
 					ON salon.salon_id = employee.salon_id
 					WHERE salon.salon_id = '" . $id ."'");*/
 
-$data3 = $connection->query("SELECT * FROM slot WHERE  slot.salon_id =" . $id );
+$data3 = $connection->query("SELECT * FROM slot WHERE slot.salon_id =" . $id );
 
 $data2 = $connection->query("SELECT * FROM employee WHERE employee.salon_id =" . $id );
 $row1 = $data1 -> fetch_assoc();
@@ -28,7 +28,7 @@ $row3 = $data3 -> fetch_assoc();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Page</title>
+	<title>Salons</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -36,46 +36,75 @@ $row3 = $data3 -> fetch_assoc();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
 <?php include('nav.php') ?>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
 		<h2 Style="margin-top:50px;text-align:center">Employee </h2><hr class="bg-info">
 		<img src="images/Employee.jpg" class="rounded-circle mx-auto d-block" alt="employee" width="200" height="200" style="margin-bottom: 20px;margin-top: 30px; ">
 		<?php do { ?> 
-		<ul class="nav-link">
-       <a href="u1.php?id=<?php echo $row2['emp_id']; ?>" style="margin-top: 10px; width: 100%;" class="btn btn-outline-info " data-id="<?php echo $row2['emp_id']; ?>"  ><?php echo $row2['fname']; ?></a>
-         </ul> 
-   <?php } while($row2 = $data2 -> fetch_assoc()) ?>
+		<ul>
+       <li class="nav-link">
+           <a href="<?php echo $row2['emp_id']; ?>" data-toggle="tooltip"  class="btn btn-outline-info " style="margin-top:10px; width:100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  "><?php echo $row2['fname']; ?></a>
+      </li>
+      <li>
+<?php 
+$i = 0;
+$pre_slot_id = "";
+				    
+   echo "Available Time Slots";
+				  echo "<hr>";
+				  echo "<br>";
+while($row3 = $data3->fetch_assoc()){ 
+    if($row3['slot_id'] != $pre_slot_id){ 
+        if($i > 0){
+            echo "</table>"; 
+            echo "<hr>"; 
+        }
+        echo "<table>"; 
+            echo "<tr>";
+                echo "<th >".$row3['avail']."</th>"; 
+            echo "</tr>";
+			echo "<tr>";
+		echo '<a href="bookslot.php?id='. $row3['slot_id'] .'">Book This Slot</a>'; 
+			echo "</tr>";
+    $i++; 
+    $pre_slot_id = $row3['slot_id']; 
+    }
+    echo "<tr>";
+		echo "<td>".$row2['fname']."</td>";
+        echo "<td>".$row3['emp_id']."</td>";
+    echo "</tr>";
+}
+echo "</hr>";
+echo "</table>"; ?>
+      </li>
+      <?php } while($row2 = $data2 -> fetch_assoc()) ?>
+    </ul>
 	  </div>
 	
+		
 	 <?php do { ?>
 		<div class="col-sm-8" style="text-align: center">
-			<h1 Style="margin-top:30px;text-align:center;float: inherit"><?php echo $row1['sname']; ?></h1>	<br>
-			<div><img src="<?php echo $row1['image'];?>" class="img-fluid" style="width:70%; height: 60%; "></div>
+			<h1 Style="margin-top:50px;text-align:center;float: inherit"><?php echo $row1['sname']; ?></h1>	
+			<div><img src="<?php echo $row1['image'];?>" class="img-fluid" style="width:100%; height: 60%; "></div>
 			<br>
-            <p class="text-info" style="font-size:20px"><b>ADDRESS</b></p>
-            <p><?php echo $row1['saddress']; ?><br>
-				<?php echo $row1['city']; ?> &nbsp;
-				<?php echo $row1['state']; ?> - 
-                <?php echo $row1['zip']; ?><br>
-				Contact Number: &nbsp;<?php echo $row1['number']; ?><br>
-				Email Address: &nbsp;<?php echo $row1['email']; ?><br>
-				Opening hours:&nbsp; Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </p>
+			<p><li>Address: <?php echo $row1['saddress']; ?>.</li>
+				<li><?php echo $row1['city']; ?>.</li>
+				<li><?php echo $row1['zip']; ?>.</li>
+				<li><?php echo $row1['state']; ?>.</li>
+				<li>Contact Number: <?php echo $row1['number']; ?>.</li>
+				<li>Email Address: <?php echo $row1['email']; ?>.</li>
+				<li>Opening hours: Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </li></p>
 	  <?php } while($row1 = $data1 -> fetch_assoc()) ?>
-	  	
-	  
-
-			<div id="newid"></div>
-
-      
+	  	</div>
+	
 	  </div>
 	  </div>
-	  </div></div>
 	<br>
 <!-- Footer -->
  <div class="footer">

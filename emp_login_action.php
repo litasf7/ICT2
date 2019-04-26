@@ -2,7 +2,7 @@
 	session_start();
 
 
-	if (isset($_SESSION["loggedIn"])) {
+	if (isset($_SESSION["email"])) {
 		
 		header("Location: emp_welcome.php");
 		exit();
@@ -16,16 +16,17 @@
 				
 		if ($data->num_rows > 0) {
 			$row = $data->fetch_assoc();
-			$_SESSION["email"] = $row['email'];
-
-			$_SESSION["loggedIn"] = 1;
-			$_SESSION["emp_code"] = $emp_code;
-			$_SESSION["emp_id"] = $emp_id;
 			
+			$_SESSION["email"] = $row['email'];
+			$_SESSION["loggedIn"] = 1;
+			$_SESSION["emp_code"] = $row['emp_code'];
+			$_SESSION["emp_id"] = $row['emp_id'];
+		
 			header("Location: emp_welcome.php");
 			exit();
 
-		} else {
+		} 
+		else {
 			
 			echo "Please check your inputs!";
 		}

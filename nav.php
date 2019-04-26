@@ -1,6 +1,8 @@
 <?php 
 session_start();
  $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
+	$_SESSION["email"];
+	$_SESSION["emp_code"];
 
 ?>
 <html>
@@ -46,13 +48,20 @@ session_start();
         <a class="nav-link" href="contact.php" style="color:#ffffff">Contact</a>
       </li>
       <li class="nav-item">
-          <?php if(isset($_SESSION['email'])){ ?>
+          <?php if(isset($_SESSION["email"])){ ?>
         <a class="nav-link" href="logout.php" style="color:#ffffff">Logout</a>
       </li>
       <li class="nav-item">
           <?php } else{ ?>
         <a class="nav-link" href="login.php" style="color:#ffffff">Login</a>
           <?php } ?>
+		</li>
+          <li class="nav-item">
+          <?php if(isset($_SESSION["email"])){ ?>
+        <a class="nav-link" href="myaccount.php?id=<?php echo $_SESSION["email"]; ?>" style="color:#ffffff">My Account</a>
+        <?php } else{ ?>
+        <?php } ?>
+      </li>
       </li>
     </ul>
 

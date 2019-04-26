@@ -25,7 +25,7 @@ else{
 			$data = $connection->query("UPDATE employee SET fname = '$fname' , lname = '$lname' , email = '$email' , password = '$password' WHERE emp_code = '$emp_code' ");
 			echo "Registration Sucessful";
     		
-				
+				header("Location:emp_welcome.php");
 		} 		
 		else 
 		{
@@ -38,9 +38,3 @@ else{
 		
 			
 ?>
-<br>
-<html>
-	<body>
-		<a href="">Login</a>
-	</body>
-</html>
