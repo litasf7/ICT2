@@ -48,7 +48,7 @@ $row3 = $data3 -> fetch_assoc();
 		<img src="images/Employee.jpg" class="rounded-circle mx-auto d-block" alt="employee" width="200" height="200" style="margin-bottom: 20px;margin-top: 30px; ">
 		<?php do { ?> 
 		<ul class="nav-link">
-       <a href="u1.php?id=<?php echo $row2['emp_id']; ?>" style="margin-top: 10px; width: 100%;" class="btn btn-outline-info " data-id="<?php echo $row2['emp_id']; ?>"  ><?php echo $row2['fname']; ?></a>
+       <a type="btn btn-info" name="view" style="color: black; width: 100%;" href="u1.php?id=<?php echo $row2["emp_id"]; ?>" class="btn btn-info btn-xs view_data" > <?php echo $row2["fname"]; ?></a>
          </ul> 
    <?php } while($row2 = $data2 -> fetch_assoc()) ?>
 	  </div>
@@ -68,14 +68,12 @@ $row3 = $data3 -> fetch_assoc();
 				Opening hours:&nbsp; Mon-Fri:7am-6pm; Sat-Sun: 9am-5pm </p>
 	  <?php } while($row1 = $data1 -> fetch_assoc()) ?>
 	  	
-	  
-
-			<div id="newid"></div>
-
-      
 	  </div>
 	  </div>
-	  </div></div>
+	</div>
+	 
+			<div id="newid" ></div>
+
 	<br>
 <!-- Footer -->
  <div class="footer">

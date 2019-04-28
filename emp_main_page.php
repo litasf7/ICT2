@@ -55,6 +55,7 @@ if ($data->num_rows>0){
 	<div style=" font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', serif ; font-style: bold ; font-size: 16px; color: black;">
 
 		<h5 style="text-align: center; margin-top:40px; margin-left:40px; margin-right:40px; border: 1px groove;"> <?php echo $row1['avail'] ?></h5> 
+		<a type="btn btn-info" id="<?php echo $row1['slot_id']; ?>" name="view" style="text-align: center; color: black; width: 25%;"  class="btn btn-info btn-xs view_data" > Delete</a>
 	
 		</div>
 		
@@ -76,11 +77,32 @@ if ($data->num_rows>0){
 	   
 	 
 </div>
+
+
+
+
+ <script>  
+ $(document).ready(function(){  
+      $('.view_data').click(function(){  
+           var id = $(this).attr("id");  
+           $.ajax({  
+                url:"timeslot_delete.php",  
+                method:"post",  
+                data:{id:id},  
+                success:function(data){  
+				 location.reload();
+					//alert(data);
+				
+                       
+                }  
+           });  
+      });  
+ });  
+ </script>
 	</body>
 	<?php include('footer.php'); ?>
 </html>
-<?php } ?>
-
+<?php }?>
 
 	
 

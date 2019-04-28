@@ -116,7 +116,7 @@
  <div class="footer">
 <div class="jumbotron text-center bg-info" style="margin-bottom:0; padding-top:40px; padding-bottom:10px;">
   
-<?php include("footer.php")?>
+<?php include("footer.php") ?>
   
      </div></div>
   <!-- Footer -->

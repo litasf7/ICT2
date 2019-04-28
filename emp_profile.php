@@ -1,25 +1,22 @@
-
 <?php 
 session_start();
 $user_check = $_SESSION['email'];
 		$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
-		$user_sql = "select * from user where email='$user_check'";
+		$user_sql = "select * from salon where email='$user_check'";
    		$user_sql = $connection -> query($user_sql);
         
 		if ($user_sql -> num_rows == 1) {
-    	//make a query to check if a valid user
-    	$ses_sql = "select * from user where email='$user_check'";
 
+   
   	// check session variable
   	if (isset($_SESSION['email']))
   	{
-	
-		$user_check = $_SESSION['email'];
+		//make the database connection
 		$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
-
+		$user_check = $_SESSION['email'];
    
     	//make a query to check if a valid user
-    	$ses_sql = "select * from user where email='$user_check'";
+    	$ses_sql = "select * from employee where email='$user_check'";
     	$result = $connection -> query($ses_sql);
         
 		if ($result -> num_rows == 1) {
@@ -29,17 +26,20 @@ $user_check = $_SESSION['email'];
 			$lname = $row['lname'];
 			$email = $row['email'];
 			
-    		
-		
-		
-			
-	?>
-<?php include("nav.php"); ?>
+   	?>
 
+<?php include("nav.php"); ?>
 <div class="container" style="text-align:center; ">
     <h1 class="text-info" style="margin-top:40px">My Account</h1>
-    <a  href=user_update.php class="btn btn-outline-info" style="float:right" >EDIT</a><br><hr>
     
+    <div class="row" style="margin-top:50px">
+    <div class="col-sm-4">
+         <h5><b> Timeslots <a  href=emp_main_page.php class="btn btn-outline-info" style="float:left;font-size:10px" >ADD</a> </b></h5>
+        <hr class="bg-info">
+
+         </div>
+        <div class="col-sm-8">  
+     <h5><b> Personal Details <a  href=emp_main_page.php class="btn btn-outline-info" style="float:right;font-size:10px" >EDIT</a> </b></h5><hr class="bg-info">
 	  <table class="table table-info " style="width:50%; margin-left:25%; margin-top:50px">
          
           
@@ -55,7 +55,7 @@ $user_check = $_SESSION['email'];
               <td>Email:</td>
                 <td><?php echo $row["email"] ?></td>
           </tr>
-    </table></div> <br><br><br><br><br><br><br><br><br>
+            </table></div></div></div> <br><br><br><br><br><br><br><br><br>
 		<!-- Footer -->
  <div class="footer">
 <div class="jumbotron text-center bg-info" style="margin-bottom:0; padding-top:40px; padding-bottom:10px;">
@@ -64,9 +64,9 @@ $user_check = $_SESSION['email'];
   
      </div></div>
   <!-- Footer -->
-<?php } ?>
-  <?php } ?>
-  <?php } else { 
+     <?php } ?>
+      <?php } ?>
+    <?php } else { 
 	header(("Location:homepage.php"));
 ?>
 <?php }?>

@@ -1,6 +1,12 @@
 <?php  
 session_start();  
  $email =  $_SESSION['email'];
+
+		$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
+		$user_sql = "select * from user where email='$email'";
+   		$user_sql = $connection -> query($user_sql);
+        
+		if ($user_sql -> num_rows == 1) {
 if(!$_SESSION['email'])  
 {  
   
@@ -19,8 +25,8 @@ if ($sql->num_rows>0){
 			$password = $row['password'];
 	
 	
-}
-}
+
+
 ?> 
 <html>  
 <?php include("nav.php")?>
@@ -39,5 +45,10 @@ echo $row['fname'];
   
   
 </body>  
-  
+  <?php } ?>
+  <?php } ?>
+  <?php } else { 
+	header(("Location:homepage.php"));
+?>
+<?php }?>
 </html>  

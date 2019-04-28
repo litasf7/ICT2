@@ -1,8 +1,12 @@
 <?php 
 session_start();
-if (!isset($_SESSION["loggedIn"])) {
-	header("Location:empLogin.php");
+if(!isset($_SESSION["emp_code"]))
+{
+header("Location:homepage.php");
 }
+?>
+<?php if(isset($_SESSION["emp_code"])){ ?>
+<?php
 $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 $data = $connection->query("SELECT * FROM employee WHERE emp_code ='$emp_code'");
 				
@@ -158,3 +162,5 @@ $data = $connection->query("SELECT * FROM employee WHERE emp_code ='$emp_code'")
 <?php include('footer.php') ?>
 </body>
 </html>
+<?php session_destroy();?>
+<?php } ?>

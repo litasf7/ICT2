@@ -1,4 +1,12 @@
+<?php 
+session_start();
+if(isset($_SESSION['email']))
+{
+header("Location:homepage.php");
+}
+?>
 
+<?php if(!isset($_SESSION['email'])){ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,3 +82,4 @@
 
 
 </html>
+<?php } ?>

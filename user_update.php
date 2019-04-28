@@ -1,9 +1,11 @@
 <?php
-
-
 session_start();
-
-
+$user_check = $_SESSION['email'];
+		$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
+		$user_sql = "select * from user where email='$user_check'";
+   		$user_sql = $connection -> query($user_sql);
+        
+		if ($user_sql -> num_rows == 1) {
 	$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 		
 		$s_email = $_SESSION['email'];
@@ -81,3 +83,6 @@ $result = $connection->query($sql) or die(mysql_error());
 }  
 ?>
 <a href="user_profile.php">My account</a>
+<?php } else { ?>
+<?php header("Location:homepage.php") ;} ?>
+

@@ -1,17 +1,30 @@
 
  <?php  
 session_start();
+$id = $_GET['id'];
  $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers"); 
- $query = "SELECT * FROM employee";  
+ $query = "SELECT * FROM employee WHERE emp_id=".$id;  
  $result = mysqli_query($connection, $query);  
  ?>  
- <!DOCTYPE html>  
- <html>  
-      <head>  
-           <title></title>  
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Time Slot</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
+</head>
+<body>
+
+<?php include('nav.php') ?>
+            
+         
+      
       </head>  
       <body>  
            <br /><br />  
@@ -22,7 +35,7 @@ session_start();
                      <table class="table table-bordered">  
                           <tr>  
                                <th width="70%">Employee Name</th>  
-                               <th width="30%">View</th>  
+                               <th width="30%">View Time Slot</th>  
                           </tr>  
                           <?php  
                           while($row = mysqli_fetch_array($result))  
@@ -30,7 +43,8 @@ session_start();
                           ?>  
                           <tr>  
                                <td><?php echo $row["fname"]; ?></td>  
-                               <td><input type="button" name="view" value="view" id="<?php echo $row["emp_idid"]; ?>" class="btn btn-info btn-xs view_data" /></td>  
+                          
+                               <td><input type="button" name="view" value="view" id="<?php echo $row["emp_id"]; ?>" class="btn btn-info btn-xs view_data" /></td>  
                           </tr>  
                           <?php  
                           }  
@@ -44,17 +58,17 @@ session_start();
       <div class="modal-dialog">  
            <div class="modal-content">  
                 <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">Slot Details</h4>  
+                  
+                     <h4 class="modal-title">Time Slot Availability</h4>  
                 </div>  
                 <div class="modal-body" id="employee_detail">  
                 </div>  
-                <div class="modal-footer">  
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                <div class="modal-footer"> 
+                     <button type="button" class="close"  class="btn btn-default" data-dismiss="modal">Close</button>  
                 </div>  
            </div>  
       </div>  
- </div>  
+ </div> 
  <script>  
  $(document).ready(function(){  
       $('.view_data').click(function(){  
@@ -64,8 +78,9 @@ session_start();
                 method:"post",  
                 data:{id:id},  
                 success:function(data){  
-                     $('#employee_detail').html(data);  
+				  $('#employee_detail').html(data);  
                      $('#dataModal').modal("show");  
+                       
                 }  
            });  
       });  

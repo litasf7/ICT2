@@ -2,7 +2,6 @@
 session_start();
  $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 	$_SESSION["email"];
-	$_SESSION["emp_code"];
 
 ?>
 <html>
@@ -48,21 +47,46 @@ session_start();
         <a class="nav-link" href="contact.php" style="color:#ffffff">Contact</a>
       </li>
       <li class="nav-item">
-          <?php if(isset($_SESSION["email"])){ ?>
+ 		<?php if(isset($_SESSION["email"])){?>
+       
         <a class="nav-link" href="logout.php" style="color:#ffffff">Logout</a>
       </li>
       <li class="nav-item">
-          <?php } else{ ?>
+          <?php } elseif($_SESSIO["emp_code"]){ ?>
         <a class="nav-link" href="login.php" style="color:#ffffff">Login</a>
+          <?php } else { ?>
+          <a class="nav-link" href="login.php" style="color:#ffffff">Login</a>
           <?php } ?>
 		</li>
           <li class="nav-item">
-          <?php if(isset($_SESSION["email"])){ ?>
-        <a class="nav-link" href="myaccount.php?id=<?php echo $_SESSION["email"]; ?>" style="color:#ffffff">My Account</a>
-        <?php } else{ ?>
-        <?php } ?>
+ <?php if(isset($_SESSION["email"])) {
+			$check =  $_SESSION["email"];
+         $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
+			  	$check =  $_SESSION["email"];
+			  	$query5 = $connection->query("SELECT email FROM user WHERE email = '$check'");
+				$query6 = $connection->query("SELECT email FROM salon WHERE email = '$check'");
+				$query7 = $connection->query("SELECT email FROM employee WHERE email = '$check'");
+				$row5 = $query5->fetch_assoc();
+				$row6 = $query6->fetch_assoc();
+				$row7 = $query7->fetch_assoc();
+	?>
+		<?php if($check = $row5['email']){ ?>
+			   
+		 <a class="nav-link" href="user_profile.php?id=<?php echo $_SESSION["email"]; ?>" style="color:#ffffff">My Account</a>	  
+		 <?php } elseif($check = $row6['email']){?>
+		 <a class="nav-link" href="salon_profile.php?id=<?php echo $_SESSION["email"]; ?>" style="color:#ffffff">My Account</a>	  
+	
+		 <?php } elseif($check = $row7['email']){?>
+		 <a class="nav-link" href="emp_profile.php?id=<?php echo $_SESSION["email"]; ?>" style="color:#ffffff">My Account</a>	  
+		 <?php } else {?>
+		 <?php } ?>
+		 <?php } ?>
+		 
+ 
+			  
+			
       </li>
-      </li>
+     
     </ul>
 
     </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Page</title>
+	<title>Confirmation</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -18,8 +18,9 @@
 <?php
 session_start();
 	if(!isset( $_SESSION["email"])){
-		header("Location:viewslots.php");
-	}
+		header("Location:salonDesc.php");
+	} ?>
+	<?php if(isset($_SESSION["email"]) ) {
 $user_email = $_SESSION["email"];
 
 
@@ -29,6 +30,7 @@ if ($user->num_rows>0){
 	$row = $user->fetch_assoc();
 	$username=$row['fname'];
 	$user_id = $row['user_id'];
+	
 	$id = $_GET['id'];
 $booking = $connection->query("UPDATE slot SET  user_id = '$user_id' WHERE slot_id = '$id'");
 }
@@ -76,4 +78,4 @@ if($empdet->num_rows>0){
 <div class="jumbotron text-center bg-info" style="margin-bottom:0; padding-top:40px; padding-bottom:10px;">
   
 <?php include("footer.php")?>
-  
+  <?php } ?>

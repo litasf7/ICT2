@@ -1,7 +1,12 @@
 <?php 
-
-
+session_start();
+if(isset($_SESSION['emp_code']))
+{
+header("Location:homepage.php");
+}
 ?>
+
+<?php if(!isset($_SESSION['emp_code'])){ ?>
 
 <!DOCTYPE html>
 <html>
@@ -70,3 +75,4 @@
 
 
 </html>
+<?php } ?>
