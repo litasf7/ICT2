@@ -4,21 +4,18 @@
   <title>Carousel</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 
+    
   <style>
-  /* Make the image fully responsive */
-  .carousel-inner img {
-    width: 100%;
-    height: 100%;
-  }
-  </style>
-</head>
-<body>
+ 
+        .jarallax {
+          height: 700px;
+        }
 
-<div class="container mt-3">
+       
+    
+    </style>
+
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -30,15 +27,67 @@
   </ul>
 
   <!-- The slideshow -->
+
   <div class="carousel-inner">
+    
     <div class="carousel-item active">
-      <img src="images/image1.jpg" alt="Essentials" class="responsive" width="800" height="800">
+        
+      <div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(images/connect.jpg); background-repeat: no-repeat; background-size:cover; background-position: center center;">
+          <div class="mask rgba-stylish-light">
+            <div class="container h-100 d-flex justify-content-center align-items-center" >
+                <div class="row pt-5 mt-3">
+                    <div class="col-md-12 mb-3">
+                        <div class=" text-center text-white" style="padding-top:150px">
+                            <h1 class="display-3 white-text mb-5 wow fadeInDown" data-wow-delay="0.3s" style="background: rgba(0, 0, 0, 0.3); padding:10px">We are <text class="white-text font-weight-bold">PLATFORM</text></h1>
+                            
+                            <h6 class="text-uppercase white-text mb-3 mt-1 font-weight-bold wow fadeInDown " data-wow-delay="0.3s">Register AS </h6>
+                            <a href="salonReg.php" class="btn btn-danger btn-lg wow fadeInDown" style="width:100px" >BOSS</a>
+                            <a href="userReg.php" class="btn btn-light btn-lg wow fadeInDown" style="width:100px" >CLIENT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
     </div>
     <div class="carousel-item">
-      <img src="images/image2.jpg" alt="Men's Salon" class="responsive" width="800" height="800">
+      <div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(images/hair.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+          
+          <div class="mask rgba-stylish-light">
+            <div class="container h-100 d-flex justify-content-center align-items-center" >
+                <div class="row pt-5 mt-3">
+                    <div class="col-md-12 mb-3">
+                        <div class="intro-danger-content text-center text-white" style="padding-top:150px">
+                            <h1 class="display-3 white-text mb-5 wow fadeInDown" data-wow-delay="0.3s" style="background: rgba(0, 0, 0, 0.3); padding:10px">We Respect Your <text class="white-text font-weight-bold">TIME</text></h1>
+                            
+                            <h6 class="text-uppercase white-text mb-3 mt-1 font-weight-bold wow fadeInDown " data-wow-delay="0.3s">Style your Hair</h6>
+                            <a href="salonReg.php" class="btn btn-danger btn-lg wow fadeInDown" data-wow-delay="0.3s">BOOK APPOINTMENT</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
     </div>
     <div class="carousel-item">
-      <img src="images/image3.jpg" alt="Women's Salon" class="responsive" width="800" height="800">
+      <div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url(images/boss-bg.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+          <div class="mask rgba-stylish-light">
+            <div class="container h-100 d-flex justify-content-center align-items-center" >
+                <div class="row pt-5 mt-3">
+                    <div class="col-md-12 mb-3">
+                        <div class="intro-danger-content text-center text-white" style="padding-top:150px">
+                            <h1 class="display-3 white-text mb-5 wow fadeInDown" data-wow-delay="0.3s " style="background: rgba(0, 0, 0, 0.3); padding:10px">We Appreciate <text class="white-text font-weight-bold">STYLIST</text></h1>
+                            <h5 class="text-uppercase white-text mb-3 mt-1 font-weight-bold wow fadeInDown " data-wow-delay="0.3s">Update Timeslots </h5>
+                            <a href="empLogin.php" class="btn btn-danger btn-lg wow fadeInDown" style="width:120px">REGISTER</a>
+                            <a href="emp_portal.php" class="btn btn-light btn-lg wow fadeInDown" style="width:120px">LOGIN</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -50,8 +99,6 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
+   
 
-</div>
 
-</body>
-</html>
