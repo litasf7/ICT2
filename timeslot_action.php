@@ -1,12 +1,12 @@
-<?php 
++<?php 
 session_start();
-
+include("config.php");
 	
 	$emp_code = $_SESSION["emp_code"];
 
 	
 
- $connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
+//$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 		$data = $connection->query("SELECT * FROM employee WHERE emp_code='$emp_code'");
 	if ($data -> num_rows == 1) {
 			$row = $data -> fetch_assoc();
@@ -20,8 +20,9 @@ $b = $_SESSION["emp_code"];
 
 $value = explode(',', $_POST['time']);
 if(isset($_POST['submit']))
-{       
-	$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
+{      
+	include("config.php");
+	//$connection = new mysqli("localhost", "root", "root", "ictatjcu_bandofbarbers");
 	
 	
 	//delete records if its older than current date
@@ -68,4 +69,3 @@ if(isset($_POST['submit']))
 	
 ?>
 <?php }?>
-
