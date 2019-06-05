@@ -16,7 +16,7 @@
 <?php include('navbar.php'); ?>
 <div class="container">
 <div style=" font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', serif ; font-style: bold ; font-size: 16px; color: white;">
-    <form class="form-horizontal" role="form" method="POST" action="action_page.php">
+    <form class="form-horizontal" role="form" method="POST" action="emp_update_action.php">
 	<div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -38,6 +38,19 @@
                 </div>
             </div>
         </div>
+        <div class="row" style="margin-top:30px">
+                <div class="col-1"></div>
+                <div class="col-5 field-label-responsive font-weight-bold">
+                    <label for="image">SALON IMAGE:</label>
+                </div>
+                <div class="col-5">
+                    <div class="form-group">
+                        <div class="input-group ">
+                            <input id="uploadimage" type="file" accept="image/*" name="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="row">
             <div class="col-md-3 field-label-responsive">
                 <label for="Fname">First Name</label>
@@ -108,6 +121,84 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3 field-label-responsive">
+                <label for="address">Address:</label>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+                        <input type="text" name="saddress" class="form-control" id="address"
+                               placeholder="1234 Main St" required>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3 field-label-responsive">
+                <label for="city">City:</label>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+                        <input type="text" name="city" class="form-control" id="city"
+                               placeholder="city" required onChange="inputAlphabet(city)">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3 field-label-responsive">
+                    <label for="zip">Zip Code:</label>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group has-danger">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+                            <input type="int" name="zip" class="form-control" id="zip"
+                                   placeholder="Zip" required onChange="checkZIPCode(zip)">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3 field-label-responsive">
+                    <label for="state">State:</label>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group has-danger">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+                            <input type="text" name="state" class="form-control" id="state"
+                                   placeholder="State" required onChange="inputAlphabet(state)">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+            <div class="col-md-3 field-label-responsive">
+                <label for="number">Store Contact Number:</label>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+                        <input type="int" name="number" class="form-control" id="snumber"
+                               placeholder="Store Contact Number" required >
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="row">
             <div class="col-md-3"></div>
